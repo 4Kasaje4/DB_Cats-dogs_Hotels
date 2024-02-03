@@ -49,6 +49,7 @@ CREATE TABLE `admin` (
   `lastname` varchar(100) DEFAULT NULL,
   `username` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `address` varchar(500) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `admin_pic` varchar(500) DEFAULT NULL
@@ -114,6 +115,7 @@ CREATE TABLE `pet_sitter` (
   `lastname` varchar(100) DEFAULT NULL,
   `username` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `address` varchar(500) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `pet_sitter_pic` varchar(500) DEFAULT NULL
