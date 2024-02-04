@@ -81,7 +81,7 @@ CREATE TABLE `pet` (
   `name` varchar(100) DEFAULT NULL,
   `type` varchar(100) DEFAULT NULL,
   `breed` varchar(100) DEFAULT NULL,
-  `size` varchar(100) DEFAULT NULL,
+  `weight` varchar(100) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `foodallergies` varchar(500) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
