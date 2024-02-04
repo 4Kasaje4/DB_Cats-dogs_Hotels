@@ -119,7 +119,8 @@ CREATE TABLE `pet_sitter` (
   `address` varchar(500) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
-  `pet_sitter_pic` varchar(500) DEFAULT NULL
+  `pet_sitter_pic` varchar(500) DEFAULT NULL,
+  `status` varchar(15) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
