@@ -86,8 +86,9 @@ CREATE TABLE `pet` (
   `foodallergies` varchar(500) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `ps_id` int(11) DEFAULT NULL,
-  `checkin` date DEFAULT NULL,
+  `checkin` varchar(500) DEFAULT NULL,
   `time_in` varchar(10) DEFAULT NULL,
+  `pickup` varchar(50) DEFAULT NULL,	
   `checkout` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
