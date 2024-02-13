@@ -26,20 +26,6 @@ USE `c&d_hotels`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activity`
---
-
-CREATE TABLE `activity` (
-  `activity_id` int(11) NOT NULL,
-  `activity_name` varchar(100) DEFAULT NULL,
-  `activity_description` varchar(800) DEFAULT NULL,
-  `activity_price` int(11) DEFAULT NULL,
-  `other` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `admin`
 --
 
@@ -67,6 +53,7 @@ CREATE TABLE `message` (
   `user_id` int(11) DEFAULT NULL,
   `ps_id` int(11) DEFAULT NULL,
   `admin_id` int(11) DEFAULT NULL,
+  `sender` int(30) DEFAULT NULL,
   `message_date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -88,20 +75,7 @@ CREATE TABLE `pet` (
   `ps_id` int(11) DEFAULT NULL,
   `checkin` varchar(500) DEFAULT NULL,
   `time_in` varchar(10) DEFAULT NULL,
-  `pickup` varchar(50) DEFAULT NULL,	
-  `checkout` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pet_activity`
---
-
-CREATE TABLE `pet_activity` (
-  `pet_activity_id` int(11) NOT NULL,
-  `pet_id` int(11) DEFAULT NULL,
-  `activity_id` int(11) DEFAULT NULL
+  `pickup` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -120,7 +94,7 @@ CREATE TABLE `pet_sitter` (
   `password` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `pet_sitter_pic` varchar(500) DEFAULT NULL,
-  `status` varchar(15) DEFAULT NULL,
+  `status` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -138,19 +112,12 @@ CREATE TABLE `user` (
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
-  `user_pic` varchar(500) DEFAULT NULL,
-  `ps_id` int(11) DEFAULT NULL
+  `user_pic` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `activity`
---
-ALTER TABLE `activity`
-  ADD PRIMARY KEY (`activity_id`);
 
 --
 -- Indexes for table `admin`
@@ -176,14 +143,6 @@ ALTER TABLE `pet`
   ADD KEY `ps_id` (`ps_id`);
 
 --
--- Indexes for table `pet_activity`
---
-ALTER TABLE `pet_activity`
-  ADD PRIMARY KEY (`pet_activity_id`),
-  ADD KEY `pet_id` (`pet_id`),
-  ADD KEY `activity_id` (`activity_id`);
-
---
 -- Indexes for table `pet_sitter`
 --
 ALTER TABLE `pet_sitter`
@@ -193,18 +152,11 @@ ALTER TABLE `pet_sitter`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `ps_id` (`ps_id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `activity`
---
-ALTER TABLE `activity`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -223,12 +175,6 @@ ALTER TABLE `message`
 --
 ALTER TABLE `pet`
   MODIFY `pet_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pet_activity`
---
-ALTER TABLE `pet_activity`
-  MODIFY `pet_activity_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pet_sitter`
@@ -260,19 +206,6 @@ ALTER TABLE `message`
 ALTER TABLE `pet`
   ADD CONSTRAINT `pet_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `pet_ibfk_2` FOREIGN KEY (`ps_id`) REFERENCES `pet_sitter` (`ps_id`);
-
---
--- Constraints for table `pet_activity`
---
-ALTER TABLE `pet_activity`
-  ADD CONSTRAINT `pet_activity_ibfk_1` FOREIGN KEY (`pet_id`) REFERENCES `pet` (`pet_id`),
-  ADD CONSTRAINT `pet_activity_ibfk_2` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`activity_id`);
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`ps_id`) REFERENCES `pet_sitter` (`ps_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
