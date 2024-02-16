@@ -53,7 +53,7 @@ CREATE TABLE `message` (
   `user_id` int(11) DEFAULT NULL,
   `ps_id` int(11) DEFAULT NULL,
   `admin_id` int(11) DEFAULT NULL,
-  `sender` int(30) DEFAULT NULL,
+  `sender` varchar(30) DEFAULT NULL,
   `message_date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
