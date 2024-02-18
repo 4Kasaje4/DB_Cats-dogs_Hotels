@@ -52,7 +52,6 @@ CREATE TABLE `message` (
   `message_text` varchar(1000) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `ps_id` int(11) DEFAULT NULL,
-  `admin_id` int(11) DEFAULT NULL,
   `sender` varchar(30) DEFAULT NULL,
   `message_date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -131,8 +130,7 @@ ALTER TABLE `admin`
 ALTER TABLE `message`
   ADD PRIMARY KEY (`message_id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `ps_id` (`ps_id`),
-  ADD KEY `admin_id` (`admin_id`);
+  ADD KEY `ps_id` (`ps_id`);
 
 --
 -- Indexes for table `pet`
@@ -197,8 +195,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`ps_id`) REFERENCES `pet_sitter` (`ps_id`),
-  ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`);
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`ps_id`) REFERENCES `pet_sitter` (`ps_id`);
+
 
 --
 -- Constraints for table `pet`
